@@ -13,12 +13,19 @@ const material = new THREE.MeshBasicMaterial( { color: 0x00ff00 } );
 const cube = new THREE.Mesh(geometry, material);
 scene.add( cube );
 
-camera.position.z = 3;
+const geometry1 = new THREE.TorusGeometry( 10, 3, 16, 100 );
+const material1 = new THREE.MeshBasicMaterial( { color: 0xffff00, wireframe: true } );
+const torus = new THREE.Mesh( geometry1, material1 );
+scene.add( torus );
+
+camera.position.z = 20;
 
 function animate() {
   requestAnimationFrame( animate );
-  cube.rotation.x += 0.01;
-  cube.rotation.y += 0.01;
+  cube.rotation.x += 0.1;
+  cube.rotation.y += 0.1;
+  torus.rotation.x -= 0.005;
+  torus.rotation.y -= 0.005;
   renderer.render( scene, camera);
 }
 
