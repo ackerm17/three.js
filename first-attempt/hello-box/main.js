@@ -9,14 +9,18 @@ const renderer = new THREE.WebGLRenderer({canvas});
 renderer.setSize( window.innerWidth, window.innerHeight );
 
 const geometry = new THREE.BoxGeometry( 1,1,1);
-const material = new THREE.MeshBasicMaterial( { color: 0x00ff00 } );
+const material = new THREE.MeshStandardMaterial( { color: 0x00ff00 } );
 const cube = new THREE.Mesh(geometry, material);
 scene.add( cube );
 
 const geometry1 = new THREE.TorusGeometry( 10, 3, 16, 100 );
-const material1 = new THREE.MeshBasicMaterial( { color: 0xffff00, wireframe: true } );
+const material1 = new THREE.MeshStandardMaterial( { color: 0xffff00} );
 const torus = new THREE.Mesh( geometry1, material1 );
 scene.add( torus );
+
+const light = new THREE.DirectionalLight(0xffffff, 1, 100)
+light.position.set(10,10,10);
+scene.add(light);
 
 camera.position.z = 20;
 
